@@ -1,159 +1,54 @@
-# Campus Rumour Spreading Simulation
+# Rumour / Study — The Campus Rumour Experiment
 
-### An Agent-Based Modelling Project Using NetLogo
+An interactive project website for **Campus Rumour Spreading Simulation**, created as an explorable research exhibit.
 
-A NetLogo-based agent-based simulation that explores how rumours propagate through a population of students in a campus environment and how individual fact-checking behaviour influences the spread of information.
+## Open locally
 
-The project demonstrates how simple individual interactions can collectively produce complex patterns of information diffusion.
+Open `index.html` in a modern browser. No installation, server, build step, or account is required. The page uses standard HTML, CSS, JavaScript, and Canvas. It uses Google Fonts when available with local system-font fallbacks.
 
----
+## Website features
 
-## Project Overview
+- Original research-led visual design with a responsive layout.
+- An interactive **browser recreation** of the campus simulation (not NetLogo itself).
+- Setup, run/pause, step-one-tick, reset, parameter sliders, and scenario presets.
+- Live student-state counts and a time-series chart.
+- Save up to eight finished runs to compare experimental outcomes within the current page session.
+- A real screenshot of the desktop NetLogo project.
+- Direct links to the GitHub source repository.
 
-Rumours can spread rapidly through social interactions, particularly in environments where individuals interact frequently.
+The simulation follows the model's phases: students move; existing believers attempt transmissions to nearby unaware students within 1.5 units; all current believers independently attempt fact-checking; a tick advances. The 33×33 world wraps at its boundaries. Browser outcomes are stochastic and may differ from the NetLogo application.
 
-This project uses **Agent-Based Modelling (ABM)** to simulate the behaviour of students as independent agents who move around a virtual campus, communicate with nearby individuals, and potentially change their beliefs.
+## GitHub repository
 
-The simulation examines how factors such as transmission probability, initial believers, population size, and fact-checking probability influence the overall propagation of a rumour.
+https://github.com/nikhil23maurya/campus-rumour-spreading-simulation
 
-## Objectives
+The repository may still contain an earlier NetLogo model. Updating the original `.nlogox` file is a separate task from deploying the website.
 
-- Understand the fundamental principles of Agent-Based Modelling.
-- Simulate information propagation through local agent interactions.
-- Examine the role of probabilistic behaviour in rumour transmission.
-- Explore how individual fact-checking affects rumour propagation.
-- Visualize the collective behaviour emerging from simple agent-level rules.
+## Deploy on GitHub Pages
 
-## Technologies Used
+The ZIP includes a `docs/` folder containing the complete website.
 
-| Technology | Purpose |
-|---|---|
-| NetLogo | Agent-based simulation environment |
-| NetLogo Programming Language | Agent behaviour and simulation logic |
-| Agent-Based Modelling | Computational modelling methodology |
+1. Upload the **whole** `docs/` folder to the root of the GitHub repository.
+2. Commit to the `main` branch.
+3. In GitHub, go to **Settings → Pages**.
+4. Select **Deploy from a branch**, then **main**, then **/docs**, and save.
+5. After GitHub finishes deployment, the expected URL is:
+   `https://nikhil23maurya.github.io/campus-rumour-spreading-simulation/`
 
-## Simulation Model
+The website was created locally and **has not been deployed**.
 
-Each student is represented by an autonomous agent, called a **turtle** in NetLogo.
+## Files
 
-Agents move around a two-dimensional virtual campus and interact with nearby students.
+- `index.html` — webpage markup
+- `styles.css` — visual system
+- `script.js` — interactive simulation and charts
+- `assets/netlogo-capture.webp` — original NetLogo screenshot
+- `assets/favicon.svg` — site icon
 
-### Agent States
+## Model limitations
 
-| State | Colour | Description |
-|---|---|---|
-| Unaware | Blue | Student has not adopted the rumour |
-| Believer | Orange | Student believes the rumour and can spread it |
-| Verified | Green | Student has performed fact-checking and stops spreading the rumour |
+The model is a simplified conceptual study. It does not establish whether a rumour is true or predict real campus behaviour. "Verified" is a non-spreading state after fact-checking under the model's assumptions.
 
-### Behavioural Rules
+## Design
 
-**1. Initialization**
-
-A specified number of students are generated at random positions. A selected group begins as initial rumour believers, while the remaining students are unaware.
-
-**2. Student Movement**
-
-Students move independently around the simulation environment using randomized turns and forward movement.
-
-**3. Rumour Transmission**
-
-A believer can transmit the rumour to an unaware student within a defined interaction radius.
-
-Transmission is probabilistic and depends on the configured spread probability.
-
-**4. Fact-Checking**
-
-Believers have an independent probability of fact-checking the rumour during each simulation step.
-
-After fact-checking, they enter the verified state and stop spreading the rumour.
-
-**5. Simulation Progression**
-
-The simulation advances through discrete time steps, represented by NetLogo ticks.
-
-## Simulation Parameters
-
-| Parameter | Description |
-|---|---|
-| `population` | Total number of student agents |
-| `initial-believers` | Number of initial rumour believers |
-| `spread-probability` | Probability (%) of rumour transmission during an eligible interaction |
-| `fact-check-probability` | Probability (%) that a believer fact-checks during a simulation step |
-
-The model uses an interaction radius of 1.5 NetLogo units and a movement step of 0.5 units.
-
-## How to Run
-
-1. Download and install NetLogo from [netlogo.org](https://www.netlogo.org/).
-2. Clone or download this GitHub repository.
-3. Open the project model file using NetLogo.
-4. Configure the simulation parameters using the Interface controls.
-5. Click **Setup** to initialize the student population.
-6. Click **Go** to start the simulation.
-7. Observe how the agents change their states as the simulation progresses.
-
-**Note:** The number of initial believers must not exceed the total population.
-
-## Experiments and Observations
-
-The simulation can be used to explore different scenarios:
-
-**Scenario 1 — High Rumour Transmission**
-
-Increase spread probability to examine how quickly information can propagate through the population.
-
-**Scenario 2 — Increased Fact-Checking**
-
-Increase fact-check probability to observe how the conversion of believers into non-spreading agents affects rumour propagation.
-
-**Scenario 3 — Different Initial Conditions**
-
-Modify the population and number of initial believers to explore how starting conditions influence the simulation.
-
-**Scenario 4 — Low Interaction-Based Transmission**
-
-Reduce spread probability to observe how weaker transmission affects the diffusion process.
-
-These are exploratory experiments rather than empirically validated predictions of real student behaviour.
-
-## Model Limitations
-
-This is a simplified computational model developed for educational purposes.
-
-- All students follow the same behavioural rules.
-- Interactions depend on spatial proximity rather than real social networks.
-- Fact-checking is represented probabilistically rather than through detailed information evaluation.
-- The verified state represents fact-checking and cessation of spreading; the model does not independently establish whether the rumour is true or false.
-- The simulation is not calibrated against real-world campus data.
-
-## Future Enhancements
-
-Potential improvements include:
-
-- Realistic friendship and social-network structures.
-- Different trust levels and influence among students.
-- Agent-specific transmission and fact-checking behaviour.
-- Real-time statistical charts for agent populations.
-- Multiple competing rumours.
-- Data export and comparative simulation experiments.
-
-## Academic Relevance
-
-This project demonstrates several fundamental concepts of Agent-Based Modelling:
-
-- Autonomous agents
-- Local interactions
-- Probabilistic state transitions
-- Dynamic simulation environments
-- Emergent collective behaviour
-
-It provides a practical introduction to computational social simulation and information diffusion.
-
----
-
-**Project Type:** Academic / Educational Simulation
-
-**Domain:** Agent-Based Modelling and Computational Social Systems
-
-**Platform:** NetLogo
+This is intentionally designed as an interactive scientific story: large readable typography, asymmetrical grids, a custom animated agent field, restrained state colours, and data as the visual focus. It does not use a generic product-page feature-card template.
